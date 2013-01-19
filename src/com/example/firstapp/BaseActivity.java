@@ -1,20 +1,16 @@
 package com.example.firstapp;
 
-import android.os.Bundle;
-import android.app.Activity;
-import android.graphics.Typeface;
-import android.view.Menu;
-
 import org.andengine.engine.camera.Camera;
 import org.andengine.engine.options.EngineOptions;
 import org.andengine.engine.options.ScreenOrientation;
 import org.andengine.engine.options.resolutionpolicy.RatioResolutionPolicy;
 import org.andengine.entity.scene.Scene;
-import org.andengine.entity.scene.background.Background;
 import org.andengine.entity.util.FPSLogger;
 import org.andengine.opengl.font.Font;
 import org.andengine.opengl.font.FontFactory;
 import org.andengine.ui.activity.SimpleBaseGameActivity;
+
+import android.graphics.Typeface;
 
 public class BaseActivity extends SimpleBaseGameActivity {
 	static final int CAMERA_WIDTH = 800;
@@ -58,4 +54,16 @@ public class BaseActivity extends SimpleBaseGameActivity {
         mCurrentScene = scene;
         getEngine().setScene(mCurrentScene);
     }
+    
+
+	@Override
+	public void onBackPressed() {
+	    if (mCurrentScene instanceof GameScene)
+	        ((GameScene) mCurrentScene).detach();
+	
+	    mCurrentScene = null;
+	    SensorListener.instance = null;
+	    super.onBackPressed();
+	}
+
 }

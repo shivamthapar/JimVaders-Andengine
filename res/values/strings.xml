@@ -7,5 +7,6 @@
     <string name="title_1">Boss</string>
     <string name="title_2">Man</string>
     <string name="start">Go!</string>
+    <string name="accuracy">Accuracy: </string>
 
 </resources>
